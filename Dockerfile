@@ -5,5 +5,10 @@ FROM alpine:3.13
 RUN apk add --no-cache curl iproute2 sshfs
 
 # Download and install the telepresence binary
-RUN curl -fL https://app.getambassador.io/download/tel2/linux/amd64/latest/telepresence -o telepresence && \
+RUN curl -fL https://app.getambassador.io/download/tel2/linux/amd64/latest/telepresence>
    install -o root -g root -m 0755 telepresence /usr/local/bin/telepresence
+
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https:>
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin
+
