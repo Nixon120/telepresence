@@ -1,6 +1,6 @@
-
 # Dockerfile with telepresence and its prerequisites
-FROM alpine:3.13
+#FROM alpine:3.13
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:alpine
 
 # Install Telepresence prerequisites
 RUN apk add --no-cache curl iproute2 sshfs
@@ -12,5 +12,9 @@ RUN curl -fL https://app.getambassador.io/download/tel2/linux/amd64/latest/telep
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
+
+RUN apk --update add openjdk7-jre
+RUN gcloud components install app-engine-java kubectl
+
 
 
